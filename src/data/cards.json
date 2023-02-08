@@ -1,0 +1,37 @@
+[
+    {
+        "id":1,
+        "message":"Effort won't betray you.",
+        "likes_count":0,
+        "status": true,
+        "board_id": 1
+    },
+    {
+        "id":3,
+        "message":"You're strong and you have good taste in computers.",
+        "likes_count":2,
+        "status": true,
+        "board_id": 1
+    },    
+    {
+        "id":2,
+        "message":"hello",
+        "likes_count":0,
+        "status": true,
+        "board_id": 2
+    },
+    {
+        "id":4,
+        "message":"ocelot",
+        "likes_count":0,
+        "status": true,
+        "board_id": 2
+    },
+    {
+        "id":5,
+        "message":"awesome",
+        "likes_count":3,
+        "status": true,
+        "board_id": 2
+    }
+]
