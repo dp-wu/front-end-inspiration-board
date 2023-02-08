@@ -32,7 +32,7 @@ CardsForSelectedBoard.propTypes = {
       status: PropTypes.bool,
       likesCount: PropTypes.number,
     })
-  ).isRequired,
+  ),
   onUpdateLike: PropTypes.func.isRequired,
   onRemove: PropTypes.func.isRequired,
 };

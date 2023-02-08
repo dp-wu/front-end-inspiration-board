@@ -49,7 +49,7 @@ const getCardsForSelectedBoard = (id) => {
     })
     .catch((error) => {
       console.log(error);
-      return INIT_CARDS //this will be deleted after connecting with Back-end
+      return INIT_CARDS.filter(card => card.boardId === id)
     });
 };
 
@@ -82,7 +82,7 @@ function App() {
 
   const fetchCards = (id) => {
     getCardsForSelectedBoard(id).then((cards) => {
-    setCardData(cards);      
+      setCardData(cards);      
     })
   }
   
@@ -96,18 +96,18 @@ function App() {
   
   const onUpdateLike = (updatedCard) => {
     const updatedCards = cardData.map((card) => {
-      if ((card.id === updatedCard.id) && (card.boardId === updatedCard.boardId)){
+      if ((card.id === updatedCard.id)){
         return updatedCard;
       } else {
         return card;
       }
       })
-    setBoardList(updatedCards);
+    setCardData(updatedCards);
   };
 
   const onRemove = (updatedCard) => {
     const cards = cardData.map((card) => {
-      if ((card.id === updatedCard.id) && (card.boardId === updatedCard.boardId)) {
+      if ((card.id === updatedCard.id)) {
         return updatedCard;
       } else {
         return card;
@@ -131,8 +131,9 @@ function App() {
     })
     setBoardList(updatedBoards);
     fetchCards(id);
-  }
-    
+    }
+
+      
   for(const board of boardsList){ 
     if (board.selected) {
       selectedBoard = board;
@@ -180,7 +181,7 @@ function App() {
             <h3>{!selectedBoard?'':`${selectedBoard.title}`}</h3>
             {/* <h3>{!selectedBoard?'':`${selectedBoard.title} created by ${selectedBoard.owner}`}</h3> */}
             <CardsForSelectedBoard
-              cardData={selectedBoard? selectedBoard.cards:[]}
+              cardData={selectedBoard? cardData:[]}
               onUpdateLike={onUpdateLike}
               onRemove={onRemove}
             />
