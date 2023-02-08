@@ -4,7 +4,6 @@ import './NewBoardForm.css'
 const defaultBoardData = {
     title:'', 
     owner:'',
-    cards:[],
     status: true,
     selected: false
 }

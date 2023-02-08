@@ -1,4 +1,4 @@
-const Board = ({id, title, owner, status, cards, selected, onSelect}) => {
+const Board = ({id, title, owner, status, selected, onSelect}) => {
     const selectBoardHandler = () => {
         onSelect(id);
     }

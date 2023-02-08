@@ -1,63 +1,23 @@
 [
     {
-    "id": 1,
-    "title":"Pick-me-up Quotes",
-    "owner":"Cindy",      
-    "cards":[
-        {
-        "id":1,
-        "message":"Effort won't betray you.",
-        "likes_count":0,
+        "id": 1,
+        "title":"Pick-me-up Quotes",
+        "owner":"Cindy",      
         "status": true,
-        "board_id": 1
-        },
-        {
-        "id":2,
-        "message":"You're strong and you have good taste in computers.",
-        "likes_count":2,
-        "status": true,
-        "board_id": 1
-        }
-    ],
-    "status": true,
-    "selected": false
+        "selected": false
     },
     {
-    "id": 2,
-    "title":"ocelot facts and fun",
-    "owner":"Kelly",      
-    "cards":[
-        {
-        "id":1,
-        "message":"hello",
-        "likes_count":0,
+        "id": 2,
+        "title":"ocelot facts and fun",
+        "owner":"Kelly",      
         "status": true,
-        "board_id": 2
-        },
-        {
-        "id":2,
-        "message":"ocelot",
-        "likes_count":0,
-        "status": true,
-        "board_id": 2
-        },
-        {
-        "id":1,
-        "message":"awesome",
-        "likes_count":3,
-        "status": true,
-        "board_id": 2
-        }
-    ],
-    "status": true,
-    "selected": false
+        "selected": false
     },
     {
-    "id": 3,
-    "title":"Project Idea",
-    "owner":"Elaine",      
-    "cards":[],
-    "status": true,
-    "selected": false
+        "id": 3,
+        "title":"Project Idea",
+        "owner":"Elaine",      
+        "status": true,
+        "selected": false
     }
 ]

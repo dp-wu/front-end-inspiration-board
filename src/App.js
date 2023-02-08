@@ -22,11 +22,7 @@ const transformCardResponse = (card) => {
   return { id, message, likesCount, boardId, status };
 }
 
-const INIT_BOARDS = DUMMY_BOARDS.map(board => {
-  const reformedCards = board.cards.map(card=> transformCardResponse(card))
-  return {...board, cards:reformedCards}
-})
-
+const INIT_BOARDS = DUMMY_BOARDS;
 const INIT_CARDS = DUMMY_CARDS.map(card=> transformCardResponse(card))
 
 const getAllBoards = () => {
