@@ -1,5 +1,5 @@
 const Board = ({id, title, owner, status, selected, onSelect}) => {
-    const selectBoardHandler = () => {
+    const selectBoardHandler = (event) => {
         onSelect(id);
     }
     return (          

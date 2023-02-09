@@ -5,8 +5,6 @@ const defaultCardData = {
   message: '',
 };
 
-
-
 const CreateNewCard = ( {onCardUpdate }) => {
   const [cardData, setCardData] = useState(defaultCardData);
   const {message} = cardData

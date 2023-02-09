@@ -85,9 +85,11 @@ function App() {
 
   const handleUpdatedBoard = (newBoard) => {
     // POST 
-    const newBoardsList = [...boardsList]
-    newBoardsList.push({...newBoard, id:boardsList.length + 1})
-    setBoardList(newBoardsList);
+    setBoardList((boardsList)=>{
+      const newBoardsList = [...boardsList]
+      newBoardsList.push({...newBoard, id:boardsList.length + 1})
+      return newBoardsList
+    });
   }
   
   const onUpdateLike = (updatedCard) => {
@@ -112,14 +114,11 @@ function App() {
     setCardData(cards);
   };
 
-  let selectedBoard;
-  
   const HandleSelectedBoard = (id) => {
     const updatedBoards = boardsList.map((board)=> { 
       const updatedBoard = {...board}
       if (board.id === id) {
         updatedBoard.selected = true;
-        selectedBoard = board;
       } else {
         updatedBoard.selected = false;
       }
@@ -129,12 +128,10 @@ function App() {
     fetchCards(id);
     }
 
-      
-  for(const board of boardsList){ 
-    if (board.selected) {
-      selectedBoard = board;
-    }
-  }
+  const selectBoard = boardsList.filter( board => {
+    return board.selected === true;
+  })
+  let selectedBoard = selectBoard[0]
 
   const handleUpdatedCard = (newCard) => {
     console.log(newCard);
@@ -142,7 +139,7 @@ function App() {
     if (!selectedBoard) {
       console.log('No board selected');
       return;
-    }
+    } 
     
     const requestBody = {
       ...newCard,
@@ -175,7 +172,6 @@ function App() {
         <BoardsList boards={boardsList} onSelect={HandleSelectedBoard}/>
           <div>
             <h3>{!selectedBoard?'':`${selectedBoard.title}`}</h3>
-            {/* <h3>{!selectedBoard?'':`${selectedBoard.title} created by ${selectedBoard.owner}`}</h3> */}
             <CardsForSelectedBoard
               cardData={selectedBoard? cardData:[]}
               onUpdateLike={onUpdateLike}

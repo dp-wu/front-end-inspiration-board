@@ -21,7 +21,6 @@ const NewBoardForm = ({onBoardUpdate}) => {
         })
     }
 
-
     const boardFormSubmitHandler = (e) => {
         e.preventDefault();
         onBoardUpdate(boardData);
