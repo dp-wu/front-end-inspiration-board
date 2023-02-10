@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 import axios from "axios";
 import "./App.css";
 import DUMMY_DATA from "../src/data/boards.json";
@@ -7,6 +7,7 @@ import NewBoardForm from "./components/NewBoardForm";
 import BoardsList from "./components/BoardsList";
 import CardsForSelectedBoard from "./components/CardsForSelectedBoard";
 import CreateNewCard from './components/CreateNewCard';
+import SortOption from './components/SortOption'
 
 const kBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
@@ -50,9 +51,11 @@ const getCardsForSelectedBoard = (id) => {
     });
 };
 
-function App() {
+
+function App() {  
   const [cardData, setCardData] = useState([]);
   const [boardsList, setBoardList] = useState(INIT_DATA);
+
 
   // const updateCardData = (id) => {
   //   likeCardWithId(id).then((updatedCard) => {
@@ -165,8 +168,6 @@ function App() {
     //   })
     // })
 
-
-
   const onRemove = (updatedCard) => {
     const cards = cardData.map((card) => {
       if (card.id === updatedCard.id) {
@@ -236,18 +237,34 @@ function App() {
       });
     };
 
+  const HandleSortCards = (value) => {
+    if (value === 'id') {
+      setCardData((cards)=>[...cards].sort((a, b) => (a.id - b.id)))
+    } else if (value === 'message'){
+      setCardData((cards) => [...cards].sort((a, b) => (a.message.localeCompare(b.message))))
+    } else if (value==='likes'){
+      setCardData((cards) => [...cards].sort((a, b) => (b.likesCount - a.likesCount)))
+    } else {
+      return cardData;
+    }
+  }
+  console.log(cardData)
+
   return (
     <div className="App">
       <main>
         <BoardsList boards={boardsList} onSelect={HandleSelectedBoard} />
         <div>
           <h3>{!selectedBoard ? "" : `${selectedBoard.title}`}</h3>
-          {selectedBoard? 
+          {selectedBoard?
+          <SortOption cardData={cardData} onChange={HandleSortCards}
+          />:[]}
+          {selectedBoard?
           <CardsForSelectedBoard
             cardData={cardData}
             onUpdateLike={onUpdateLike}
             onRemove={onRemove}
-          /> : []}
+          />:[]}
         </div>
         <NewBoardForm onBoardUpdate={handleUpdatedBoard} />
         <CreateNewCard onCardUpdate={handleUpdatedCard} />

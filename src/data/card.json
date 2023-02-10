@@ -9,7 +9,7 @@
     {
         "id":2,
         "message":"hello",
-        "likes_count":0,
+        "likes_count":4,
         "status": true,
         "board_id": 2
     },

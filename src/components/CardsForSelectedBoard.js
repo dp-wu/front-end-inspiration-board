@@ -3,6 +3,7 @@ import Card from "./Card";
 import PropTypes from "prop-types";
 
 const CardsForSelectedBoard = ({ cardData, onUpdateLike, onRemove }) => {
+  console.log("in CFSB: ", cardData)
   const cardComponents = cardData.map((card) => {
     return (
       <Card
